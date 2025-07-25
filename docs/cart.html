@@ -2,36 +2,43 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>سلة الشراء</title>
-  <link rel="stylesheet" href="style.css">
+  <title>سلة المشتريات</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>سلة MY</h1>
-  </header>
-
-  <main>
-    <div id="cart"></div>
-    <button onclick="checkout()">شراء</button>
-  </main>
+  <h1>سلة المشتريات</h1>
+  <div id="cartItems"></div>
 
   <script>
-    const cartDiv = document.getElementById('cart');
-    const cart = JSON.parse(localStorage.getItem('cart'));
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartContainer = document.getElementById('cartItems');
 
-    if (cart) {
-      cartDiv.innerHTML = `
-        <p>منتج: ${cart.name}</p>
-        <p>مقاس: ${cart.size}</p>
-        <p>السعر: ${cart.price} جنيه</p>
-      `;
+    if (cart.length === 0) {
+      cartContainer.innerHTML = '<p>السلة فارغة</p>';
     } else {
-      cartDiv.innerHTML = "<p>السلة فارغة</p>";
-    }
-
-    function checkout() {
-      localStorage.removeItem('cart');
-      window.location.href = "success.html";
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'item';
+        itemDiv.innerHTML = `
+          <p><strong>المنتج:</strong> ${item.name}</p>
+          <p><strong>السعر:</strong> ${item.price} جنيه</p>
+          <p><strong>المقاس:</strong> ${item.size}</p>
+        `;
+        cartContainer.appendChild(itemDiv);
+      });
     }
   </script>
 </body>

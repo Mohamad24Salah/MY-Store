@@ -11,35 +11,50 @@
   </header>
 
   <main>
-    <div class="product">
-      <img src="https://via.placeholder.com/300x300?text=T-Shirt" alt="تيشيرت">
-      <h2>تيشيرت MY</h2>
-      <p>السعر: 200 جنيه</p>
-      <label for="size">المقاس:</label>
-      <select id="size">
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-      </select>
-      <button onclick="addToCart()">أضف إلى السلة</button>
-    </div>
-  </main>
+  <div class="product">
+  <img src="kings zero.jpg" alt="تيشيرت Kings Zero">
+  <h2>تيشيرت Kings Zero</h2>
+  <p>السعر: 250 جنيه</p>
+  <label for="size1">المقاس:</label>
+  <select id="size1">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+  </select>
+  <button onclick="addToCart('تيشيرت Kings Zero', 250, 'size1')">أضف إلى السلة</button>
+</div>
+
+<div class="product">
+  <img src="Kings Hero.png" alt="تيشيرت Kings Hero">
+  <h2>تيشيرت Kings Hero</h2>
+  <p>السعر: 270 جنيه</p>
+  <label for="size2">المقاس:</label>
+  <select id="size2">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+  </select>
+  <button onclick="addToCart('تيشيرت Kings Hero', 270, 'size2')">أضف إلى السلة</button>
+</div>
+</main>
+
 
   <footer>
     <a href="cart.html">اذهب إلى السلة</a>
   </footer>
 
-  <script>
-    function addToCart() {
-      const size = document.getElementById('size').value;
-      const product = {
-        name: 'تيشيرت MY',
-        price: 200,
-        size: size
-      };
-      localStorage.setItem('cart', JSON.stringify(product));
-      alert('تم إضافة المنتج إلى السلة');
-    }
-  </script>
+<script>
+  function addToCart(name, price, sizeId) {
+    const size = document.getElementById(sizeId).value;
+    const product = {
+      name: name,
+      price: price,
+      size: size
+    };
+    localStorage.setItem('cart', JSON.stringify(product));
+    alert('تم إضافة المنتج إلى السلة');
+  }
+</script>
+
 </body>
 </html>
