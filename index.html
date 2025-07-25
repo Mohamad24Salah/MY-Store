@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>MY Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>MY</h1>
+  </header>
+
+  <main>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300?text=T-Shirt" alt="تيشيرت">
+      <h2>تيشيرت MY</h2>
+      <p>السعر: 200 جنيه</p>
+      <label for="size">المقاس:</label>
+      <select id="size">
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+      </select>
+      <button onclick="addToCart()">أضف إلى السلة</button>
+    </div>
+  </main>
+
+  <footer>
+    <a href="cart.html">اذهب إلى السلة</a>
+  </footer>
+
+  <script>
+    function addToCart() {
+      const size = document.getElementById('size').value;
+      const product = {
+        name: 'تيشيرت MY',
+        price: 200,
+        size: size
+      };
+      localStorage.setItem('cart', JSON.stringify(product));
+      alert('تم إضافة المنتج إلى السلة');
+    }
+  </script>
+</body>
+</html>

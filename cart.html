@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>سلة الشراء</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>سلة MY</h1>
+  </header>
+
+  <main>
+    <div id="cart"></div>
+    <button onclick="checkout()">شراء</button>
+  </main>
+
+  <script>
+    const cartDiv = document.getElementById('cart');
+    const cart = JSON.parse(localStorage.getItem('cart'));
+
+    if (cart) {
+      cartDiv.innerHTML = `
+        <p>منتج: ${cart.name}</p>
+        <p>مقاس: ${cart.size}</p>
+        <p>السعر: ${cart.price} جنيه</p>
+      `;
+    } else {
+      cartDiv.innerHTML = "<p>السلة فارغة</p>";
+    }
+
+    function checkout() {
+      localStorage.removeItem('cart');
+      window.location.href = "success.html";
+    }
+  </script>
+</body>
+</html>
